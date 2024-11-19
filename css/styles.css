@@ -10942,6 +10942,52 @@ p {
     margin-right: 0;
   }
 }
+#popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #3385FF;
+  color: white;
+  /* Adiciona contraste ao texto */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  /* Centraliza o texto */
+}
+header.mastheadform {
+  padding-top: 10.5rem;
+  padding-bottom: 6rem;
+  text-align: center;
+  color: #fff;
+  background-color: #000; /* Cor preta */
+  background-image: none; /* Remove a imagem de fundo */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ajusta a altura do elemento */
+}
+
+header.mastheadform .masthead-subheading{
+  font-size: 2rem;
+  font-style: bold;
+  line-height: 2rem;
+  margin-bottom: 25px;
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+header.mastheadform button {
+  margin-top: 25px;
+  transition: background-color 0.3s ease-in-out;
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+header.mastheadform button:hover {
+  background-color: #333; /* Cor de fundo ao passar o mouse */
+}
 header.masthead {
   padding-top: 10.5rem;
   padding-bottom: 6rem;
