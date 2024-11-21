@@ -409,38 +409,45 @@
            </section>
 
         <script>
-            // Selecione o formulário e o popup
-            const form = document.getElementById('contactForm');
-            const popup = document.getElementById('popup');
-            const fecharPopup = document.getElementById('fechar-popup');
+    // Selecione o formulário e o popup
+    const form = document.getElementById('contactForm');
+    const popup = document.getElementById('popup');
+    const fecharPopup = document.getElementById('fechar-popup');
 
+    // Adicione evento de submit ao formulário
+    form.addEventListener('submit', (e) => {
+        // Evite o redirecionamento
+        e.preventDefault();
 
-            // Adicione evento de submit ao formulário
-            form.addEventListener('submit', (e) => {
-                // Evite o redirecionamento
-                e.preventDefault();
+        // Enviar o formulário usando fetch
+        fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+        })
+            .then((res) => {
+                if (res.ok) {
+                    // Exiba a popup
+                    popup.style.display = 'block';
 
-                // Enviar o formulário usando fetch
-                fetch(form.action, {
-                    method: form.method,
-                    body: new FormData(form),
-                })
-                    .then((res) => {
-                        // Exiba a popup
-                        popup.style.display = 'block';
-                    })
-                    .catch((err) => {
-                        console.error(err);
-                        alert('Erro ao enviar formulário!');
-                    });
+                    // Limpe o formulário
+                    form.reset();
+                } else {
+                    alert('Erro ao enviar formulário. Por favor, tente novamente.');
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+                alert('Erro ao enviar formulário!');
             });
+    });
 
-            // Adicione evento de click ao botão de fechar
-            fecharPopup.addEventListener('click', () => {
-                // Oculte a popup
-                popup.style.display = 'none';
-            });
-        </script>
+    // Adicione evento de click ao botão de fechar
+    fecharPopup.addEventListener('click', () => {
+        // Oculte a popup
+        popup.style.display = 'none';
+    });
+</script>
+
 
   <!-- Footer-->
         <footer class="footer py-4">
