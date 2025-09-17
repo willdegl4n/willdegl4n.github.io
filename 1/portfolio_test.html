@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfólio - Thiago Vilarinho Lemes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Estilos básicos -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: white;
+    }
+    .portfolio-box {
+      border: 1px solid #444;
+      padding: 10px;
+      background: #2c2c2c;
+      border-radius: 5px;
+      position: relative;
+    }
+    .portfolio-box img {
+      width: 100%;
+      border-radius: 5px;
+    }
+    .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: 0.3s;
+      border-radius: 5px;
+    }
+    .portfolio-box:hover .portfolio-overlay {
+      opacity: 1;
+    }
+    .portfolio-menu a.active {
+      background-color: #007bff;
+      color: white !important;
+    }
+    .white-popup-block {
+      background: #fff;
+      padding: 20px;
+      max-width: 600px;
+      margin: 40px auto;
+      position: relative;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<section id="portfolio" class="section">
+  <div class="container">
+    <!-- Título -->
+    <div class="text-center mb-5">
+      <h2 class="text-muted text-uppercase">Portfólio</h2>
+      <p class="h4">Meus trabalhos (Freelances)</p>
+    </div>
+
+    <!-- Menu de filtros -->
+    <ul class="portfolio-menu nav nav-tabs justify-content-center mb-4 border-bottom-0">
+      <li class="nav-item"><a data-filter="*" class="nav-link active" href="#">Todos</a></li>
+      <li class="nav-item"><a data-filter=".design" class="nav-link" href="#">Projetos</a></li>
+      <li class="nav-item"><a data-filter=".brand" class="nav-link" href="#">Aplicativos</a></li>
+    </ul>
+
+    <!-- Itens do portfólio -->
+    <div class="row portfolio-filter">
+
+      <!-- Item 1 -->
+      <div class="col-sm-6 col-lg-4 mb-4 design">
+        <div class="portfolio-box">
+          <img src="https://raw.githubusercontent.com/tvlemes/projeto-estudo-dbt/main/docs/dbt_logo.png" alt="Projeto DBT">
+          <div class="portfolio-overlay">
+            <a class="popup-ajax stretched-link" href="#popup-projeto-dbt" title="Projeto Estudo DBT"></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="col-sm-6 col-lg-4 mb-4 brand">
+        <div class="portfolio-box">
+          <img src="https://via.placeholder.com/400x300.png?text=App+Mobile" alt="Aplicativo Exemplo">
+          <div class="portfolio-overlay">
+            <a class="popup-ajax stretched-link" href="#popup-app" title="Aplicativo Mobile"></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- POPUP 1 -->
+<div id="popup-projeto-dbt" class="mfp-hide white-popup-block">
+  <h2>Projeto Estudo DBT</h2>
+  <p>Este projeto demonstra o uso de dbt com PostgreSQL, estruturando uma arquitetura tipo "medalhão".</p>
+  <a href="https://github.com/tvlemes/projeto-estudo-dbt" target="_blank">Ver no GitHub</a>
+</div>
+
+<!-- POPUP 2 -->
+<div id="popup-app" class="mfp-hide white-popup-block">
+  <h2>Aplicativo Mobile</h2>
+  <p>Aplicativo de exemplo para visualização de dados via API.</p>
+  <a href="#" target="_blank">Ver detalhes</a>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    // Isotope filtragem
+    var $grid = $('.portfolio-filter').isotope({
+      itemSelector: '.col-sm-6',
+      layoutMode: 'fitRows'
+    });
+
+    $('.portfolio-menu a').on('click', function(e) {
+      e.preventDefault();
+      var filterValue = $(this).attr('data-filter');
+      $grid.isotope({ filter: filterValue });
+      $('.portfolio-menu a').removeClass('active');
+      $(this).addClass('active');
+    });
+
+    // Popup
+    $('.popup-ajax').magnificPopup({
+      type: 'inline',
+      midClick: true
+    });
+  });
+</script>
+
+</body>
+</html>
